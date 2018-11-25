@@ -1,0 +1,14 @@
+### macos
+.DS_Store
+.envrc
+
+### Go
+*.test
+vendor/
+/cover.out
+/spannercsvimporter
+_tools/
+
+### InteliJ IDEA
+.idea/
+*.iml
