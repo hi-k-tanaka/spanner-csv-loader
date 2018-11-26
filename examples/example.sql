@@ -1,0 +1,9 @@
+CREATE TABLE Students (
+  StudentId INT64 NOT NULL,
+  Name STRING(MAX) NOT NULL,
+  Score INT64 NOT NULL,
+  Average FLOAT64 NOT NULL,
+  Valid BOOL NOT NULL,
+  CreatedAt DATE NOT NULL,
+  UpdatedAt TIMESTAMP NOT NULL
+) PRIMARY KEY(StudentId);
