@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+    - image: golang:1.10-stretch
+
+    working_directory: /go/src/github.com/hi-k-tanaka/spanner-csv-loader
+    steps:
+    - checkout
+
+    - run: make tools
+    - run: make dep/ci
+    - run: make lint
