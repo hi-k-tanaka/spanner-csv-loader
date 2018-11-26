@@ -1,0 +1,3 @@
+StudentId	Name	Score	Average	Valid	CreatedAt	CommitedAt
+int64	string	int64	float64	bool	date	timestamp
+1	Mark	180	150.3	true	2018-11-12	2014-09-27T12:30:00.45Z

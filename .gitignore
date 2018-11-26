@@ -6,7 +6,7 @@
 *.test
 vendor/
 /cover.out
-/spannercsvimporter
+/spanner-csv-loader
 _tools/
 
 ### InteliJ IDEA

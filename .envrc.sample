@@ -1,1 +1,5 @@
 export PATH=_tools/bin:$PATH
+export TEST_GCS_BUCKET=xxxxxxxxxx
+export TEST_GCS_PATH=xxxxxxxxxx
+export TEST_SPANNER_PROJECT_ID=xxxxxxxxxxxxxxxxx
+export TEST_SPANNER_INSTANCE_ID=xxxxxxxxxxxxxxxxx

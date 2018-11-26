@@ -2,15 +2,22 @@
 
 
 [[projects]]
-  digest = "1:08636edd4ac1b095a9689b7a07763aa70e035068e0ff0e9dbfe2b6299b98e498"
+  digest = "1:6433f8ccac1ee82e1255c80dfc0bdec0b69a40c1b3c8d96b47efbe4900e12f0b"
   name = "cloud.google.com/go"
   packages = [
+    "civil",
     "compute/metadata",
     "iam",
     "internal",
+    "internal/fields",
     "internal/optional",
+    "internal/protostruct",
     "internal/trace",
     "internal/version",
+    "longrunning",
+    "longrunning/autogen",
+    "spanner",
+    "spanner/admin/database/apiv1",
     "storage",
   ]
   pruneopts = "UT"
@@ -18,7 +25,15 @@
   version = "v0.33.1"
 
 [[projects]]
-  digest = "1:5d1b5a25486fc7d4e133646d834f6fca7ba1cef9903d40e7aa786c41b89e9e91"
+  digest = "1:ffe9824d294da03b391f44e1ae8281281b4afc1bdaa9588c9097785e3af10cec"
+  name = "github.com/davecgh/go-spew"
+  packages = ["spew"]
+  pruneopts = "UT"
+  revision = "8991bc29aa16c548c550c7ff78260e27b9ab7c73"
+  version = "v1.1.1"
+
+[[projects]]
+  digest = "1:ec0bde6dc8cf3cb9254f79603bd8489c366a0a8584949cac5a73fa10b9f47c21"
   name = "github.com/golang/protobuf"
   packages = [
     "proto",
@@ -26,6 +41,8 @@
     "ptypes",
     "ptypes/any",
     "ptypes/duration",
+    "ptypes/empty",
+    "ptypes/struct",
     "ptypes/timestamp",
   ]
   pruneopts = "UT"
@@ -49,13 +66,33 @@
   version = "v0.8.0"
 
 [[projects]]
-  digest = "1:3b5a3bc35810830ded5e26ef9516e933083a2380d8e57371fdfde3c70d7c6952"
+  digest = "1:0028cb19b2e4c3112225cd871870f2d9cf49b9b4276531f03438a88e94be86fe"
+  name = "github.com/pmezard/go-difflib"
+  packages = ["difflib"]
+  pruneopts = "UT"
+  revision = "792786c7400a136282c1664665ae0a8db921c6c2"
+  version = "v1.0.0"
+
+[[projects]]
+  digest = "1:c40d65817cdd41fac9aa7af8bed56927bb2d6d47e4fea566a74880f5c2b1c41e"
+  name = "github.com/stretchr/testify"
+  packages = [
+    "assert",
+    "require",
+  ]
+  pruneopts = "UT"
+  revision = "f35b8ab0b5a2cef36673838d662e249dd9c94686"
+  version = "v1.2.2"
+
+[[projects]]
+  digest = "1:381ccafa5e013a0e3f9b54604ae522a73b9533a375a6a714b483c634d5e927ab"
   name = "go.opencensus.io"
   packages = [
     ".",
     "exemplar",
     "internal",
     "internal/tagencoding",
+    "plugin/ocgrpc",
     "plugin/ochttp",
     "plugin/ochttp/propagation/b3",
     "stats",
@@ -135,7 +172,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:9aafdb66063cd697b486eeed4d96a76af1ed0941fa2b9892aa7c85b21341d6a4"
+  digest = "1:0e8b921db5af6ac52dc864357fb107c8d03bfec2683b8d7f87765c27b9501911"
   name = "google.golang.org/api"
   packages = [
     "gensupport",
@@ -146,6 +183,8 @@
     "iterator",
     "option",
     "storage/v1",
+    "transport",
+    "transport/grpc",
     "transport/http",
     "transport/http/internal/propagation",
   ]
@@ -154,7 +193,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:d2a8db567a76203e3b41c1f632d86485ffd57f8e650a0d1b19d240671c2fddd7"
+  digest = "1:b13819327be647014031c6a194299da87ca35313bfc01fdc1da7bd3ddf08cbce"
   name = "google.golang.org/appengine"
   packages = [
     ".",
@@ -165,7 +204,9 @@
     "internal/log",
     "internal/modules",
     "internal/remote_api",
+    "internal/socket",
     "internal/urlfetch",
+    "socket",
     "urlfetch",
   ]
   pruneopts = "UT"
@@ -173,19 +214,23 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:1ba78ad987af2d56273afa3221ed3a798d918b711a8354120eafac022b87ce3b"
+  digest = "1:4e7dd532d04913bf8b7745ae78ae4d2ae8934a661b8b06c06c7af78efa56ef16"
   name = "google.golang.org/genproto"
   packages = [
     "googleapis/api/annotations",
     "googleapis/iam/v1",
+    "googleapis/longrunning",
     "googleapis/rpc/code",
+    "googleapis/rpc/errdetails",
     "googleapis/rpc/status",
+    "googleapis/spanner/admin/database/v1",
+    "googleapis/spanner/v1",
   ]
   pruneopts = "UT"
   revision = "b5d43981345bdb2c233eb4bf3277847b48c6fdc6"
 
 [[projects]]
-  digest = "1:c3ad9841823db6da420a5625b367913b4ff54bbe60e8e3c98bd20e243e62e2d2"
+  digest = "1:1ac2802a1ffa70fe39243e22aab53dd3386396fc98de2417ff744d87b079e78c"
   name = "google.golang.org/grpc"
   packages = [
     ".",
@@ -195,6 +240,7 @@
     "codes",
     "connectivity",
     "credentials",
+    "credentials/oauth",
     "encoding",
     "encoding/proto",
     "grpclog",
@@ -223,8 +269,13 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "cloud.google.com/go/spanner",
+    "cloud.google.com/go/spanner/admin/database/apiv1",
     "cloud.google.com/go/storage",
     "github.com/pkg/errors",
+    "github.com/stretchr/testify/assert",
+    "github.com/stretchr/testify/require",
+    "google.golang.org/genproto/googleapis/spanner/admin/database/v1",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -1,22 +1,13 @@
 export PATH := $(PWD)/_tools/bin:$(PATH)
 
-COMMAND_NAME ?= spannercsvimporter
-
-TESTPKGS ?= $(shell go list ./src/... | grep -v -e mock -e test/e2e)
-COVERPKGS ?= $(shell go list ./src/... | grep -v -e mock -e model -e test/)
-FMTPKGS = $(subst $(REPOSITORY)/,,$(shell go list ./... | grep -v mock))
-VETPKGS = $(shell go list ./... | grep -v mock)
-LINTPKGS = $(shell go list ./... | grep -v mock)
+REPOSITORY := github.com/hi-k-tanaka/spanner-csv-loader
+TESTPKGS ?= $(shell go list ./...)
+COVERPKGS ?= $(shell go list ./...)
+FMTPKGS = $(subst $(REPOSITORY)/,,$(shell go list ./...))
+VETPKGS = $(shell go list ./...)
+LINTPKGS = $(shell go list ./...)
 
 GOTEST ?= go test
-
-all: dep build
-
-## environment
-
-.PHONY: env
-env:  ## show environment variables in make
-	@$(foreach var,$(EXPORT_ENV),echo $(var)=`echo $($(var))`;)
 
 #
 # dep
@@ -32,8 +23,7 @@ dep/ci:
 # build
 #
 build:
-	go build -o spannercsvimporter src/main.go
-	#./spannercsvimporter
+	go build -o spanner-csv-loader main.go
 
 #
 # tools
@@ -49,7 +39,6 @@ tools: ## install executable tools
 
 TARGET ?= .
 
-.PHONY: test
 test:
 	$(GOTEST) -v -race -p=1 -run=$(TARGET) $(TESTPKGS)
 
@@ -59,10 +48,6 @@ test:
 
 cover:  ## take unit test coverage
 	$(GOTEST) -v -race -p=1 -run=$(TARGET) -covermode=atomic -coverprofile=$@.out -coverpkg=$(REPOSITORY)/... $(COVERPKGS)
-
-codecov: SHELL=/usr/bin/env bash
-codecov:  ## send coverage result to codecov.io
-	bash <(curl -s https://codecov.io/bash)
 
 #
 # static check
@@ -84,17 +69,7 @@ errcheck:  ## run errcheck
 	errcheck $(LINTPKGS)
 
 golint:  ## run golint
-	golint src/... | grep -v 'should have comment or be unexported' | grep -v 'comment on exported function'
-
-#
-# reviewdog
-#
-
-reviewdog:  ## run reviewdog
-	reviewdog -diff="git diff master"
-
-reviewdog/ci:  ## run reviewdog on ci
-	reviewdog -ci="circle-ci"
+	golint ./... | grep -v 'should have comment or be unexported' | grep -v 'comment on exported function'
 
 #
 # makefile
