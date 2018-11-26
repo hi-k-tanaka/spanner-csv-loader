@@ -1,6 +1,6 @@
 # spanner-csv-loader
 
-spanner-csv-loader reads csv from Google Cloud Storage or the local file system and imports that data into Google Cloud Spanner.
+spanner-csv-loader reads csv/tsv from Google Cloud Storage or the local file system and imports that data into Google Cloud Spanner.
 
 # Installation
 ```sh
@@ -45,10 +45,10 @@ CREATE TABLE Students (
 
 
 [example.csv](https://github.com/hi-k-tanaka/spanner-csv-loader/blob/master/examples/example.csv)
-```csv
-StudentId	Name	Score	Average	Valid	CreatedAt	UpdatedAt
-int64	string	int64	float64	bool	date	timestamp
-1	Mark	180	150.3	true	2018-11-12	2014-09-27T12:30:00.45Z
+```
+StudentId,Name,Score,Average,Valid,CreatedAt,UpdatedAt
+int64,string,int64,float64,bool,date,timestamp
+1,Mark,180,150.3,true,2018-11-12,2014-09-27T12:30:00.45Z
 ```
 
 # How to use
@@ -66,3 +66,5 @@ Load CSV from local file
 ```sh
 spanner-csv-loader --source=examples/example.csv --spanner-project-id=your-gcp-project --spanner-instance-id=your-spanner-instance --spanner-database-id=your-spanner-database --spanner-table=your-spanner-table
 ```
+
+Note: If you want to load tsv(tab separated values), use `--delimiter=tab` option.
