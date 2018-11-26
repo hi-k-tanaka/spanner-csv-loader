@@ -9,4 +9,5 @@ jobs:
     - checkout
 
     - run: make tools
+    - run: make dep/ci
     - run: make lint
