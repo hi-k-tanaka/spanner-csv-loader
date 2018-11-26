@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build:
+    docker:
+    - image: golang:1.10-stretch
+
+    working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
+    steps:
+    - checkout
+
+    - run: make lint
