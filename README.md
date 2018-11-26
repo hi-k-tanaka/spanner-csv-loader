@@ -9,6 +9,7 @@ go get -u github.com/hi-k-tanaka/spanner-csv-loader
 
 # Login
 spanner-csv-loader uses Google Cloud Storage and Google Cloud Spanner. You have to login to Google Cloud Platform to access them.
+You have to install [Google Cloud SDK](https://cloud.google.com/sdk/install) before do this.
 
 ```sh
 gcloud auth application-default login
