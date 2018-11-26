@@ -45,7 +45,7 @@ CREATE TABLE Students (
 
 
 [example.csv](https://github.com/hi-k-tanaka/spanner-csv-loader/blob/master/examples/example.csv)
-```csv
+```
 StudentId,Name,Score,Average,Valid,CreatedAt,UpdatedAt
 int64,string,int64,float64,bool,date,timestamp
 1,Mark,180,150.3,true,2018-11-12,2014-09-27T12:30:00.45Z
